@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">{{article.title}}</h1>
+    <div class="text-center">
+      <img src="{{article.thumb.url}}" alt="" class="img-fluid" style="width: 80%;height:60%">
+    </div>
+    <p class="lead">{{article.body}}</p>
+    <div class="badge badge-secondary float-right">{{article.date}}</div>
+  </div>
+</div>
+{% endblock %}

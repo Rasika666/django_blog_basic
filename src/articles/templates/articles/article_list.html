@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block body %}
+<div class="container">
+  <h1>Article List</h1>
+  {% for article in articles %}
+  <div class="card mt-3">
+    <div class="card-header text-center display-4">
+      {{article.title}}
+    </div>
+    <div class="card-body">
+      <div class="text-center">
+        <img src="{{article.thumb.url}}" alt="" class="img-fluid" style="width: 80%;height:60%">
+      </div>
+
+      <p>{{article.snippet}}...</p>
+      <p>{{article.date}}</p>
+      <a href="{% url '_articles:detail' slug=article.slug %}" class="btn btn-primary btn-block">Go to Post</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

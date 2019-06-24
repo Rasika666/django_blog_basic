@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-5 col-md-7 ">
+      <h2>Signup Page</h2>
+      <form action="{% url '_accounts:signup' %}" method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="{{signupForm.username.id_for_label}}">Username: *</label>
+          {{ signupForm.username}}
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          {% if signupForm.username.errors%}
+          <script>
+            const username = document.querySelector('#id_username');
+            username.classList.add('is-invalid')
+          </script>
+          {% endif %}
+          <span class="">{{ signupForm.username.errors }}</span>
+        </div>
+
+        <div class="form-group">
+          <label for="{{signupForm.first_name.id_for_label}}">First Name: </label>
+          {{ signupForm.first_name }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{signupForm.last_name.id_for_label}}">Last Name: </label>
+          {{ signupForm.last_name }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{signupForm.email.id_for_label}}">Email:* </label>
+          {{ signupForm.email }}
+          {% if signupForm.email.errors%}
+          <script>
+            const email = document.querySelector('#id_email');
+            email.classList.add('is-invalid')
+          </script>
+          {% endif %}
+          {{ signupForm.email.errors }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{signupForm.password1.id_for_label}}">Password:* </label>
+          {{ signupForm.password1 }}
+          {% if signupForm.password2.errors%}
+          <script>
+            const p1 = document.querySelector('#id_password1');
+            p1.classList.add('is-invalid')
+          </script>
+          {% endif %}
+          {{ signupForm.password1.errors }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{signupForm.password2.id_for_label}}">Confirm Password:* </label>
+          {{ signupForm.password2 }}
+          {% if signupForm.password2.errors%}
+          <script>
+            const p2 = document.querySelector('#id_password2');
+            p2.classList.add('is-invalid')
+          </script>
+          {% endif %}
+          {{ signupForm.password2.errors }}
+        </div>
+
+        <!-- {{signupForm.as_p}} -->
+        <input type="submit" value="Signup" class="btn btn-block btn-primary">
+      </form>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block bottom_script %}
+<script>
+
+</script>
+{% endblock %}
